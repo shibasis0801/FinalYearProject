@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "713938650664",
+    "firebase_url": "https://hackathon-bfb4b.firebaseio.com",
+    "project_id": "hackathon-bfb4b",
+    "storage_bucket": "hackathon-bfb4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713938650664:android:ac927e08f9004938",
+        "android_client_info": {
+          "package_name": "com.example.overlord.btech_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "713938650664-pupehpcrvb58drf29erpeeaarkmvnbcp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.overlord.btech_project",
+            "certificate_hash": "86ad28744dfda13f69a5681ffb1fd32b4e6f6434"
+          }
+        },
+        {
+          "client_id": "713938650664-t2dagi26t9brgid7fgpqmc7i62v6lhao.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJlBNWgQzGjGpgFNc7HzV8Q-35P84a5Sg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "713938650664-t2dagi26t9brgid7fgpqmc7i62v6lhao.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
