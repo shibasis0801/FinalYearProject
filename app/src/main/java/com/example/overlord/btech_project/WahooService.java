@@ -150,9 +150,7 @@ public class WahooService extends Service {
         source.connector.shutdown();
     }
 
-    public WahooService() {
-
-    }
+    public WahooService() {}
 
     @Override
     public IBinder onBind(Intent intent) {
