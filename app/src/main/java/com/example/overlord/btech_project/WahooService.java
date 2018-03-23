@@ -20,6 +20,8 @@ import com.wahoofitness.connector.conn.connections.SensorConnection;
 import com.wahoofitness.connector.conn.connections.params.ConnectionParams;
 import com.wahoofitness.connector.listeners.discovery.DiscoveryListener;
 
+import java.util.Deque;
+
 
 public class WahooService extends Service {
     private HeartBeatSource source;
@@ -118,28 +120,42 @@ public class WahooService extends Service {
     DatabaseReference root = realtime_database.getReference();
     DatabaseReference heartRef = root.child("heartBeat");
 
+    public void storeHeartBeat(String time, Deque<Double> HeartBeats) {
+        heartRef.child(time)
+                .setValue(HeartBeats)
+                .addOnCompleteListener(task -> {
+                    if ( ! task.isSuccessful()) {
+                        String message = "UNKNOWN";
+                        if (task.getException() != null)
+                            message = task.getException().getMessage();
+
+                        Log.e("Fbase HeartRate Err", message);
+                    }
+                });
+    }
+
+    public String getTimeLabel(Heartrate.Data data) {
+        return data.getTime().format("dd_MM_yyyy_HH_mm");
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
-        HeartBeatSource source = new HeartBeatSource(this);
+        source = new HeartBeatSource(this);
+        Log.i("SERVICE", "STARTED");
+
         source.onNewHeartBeat(data -> {
             Log.d("Heart Rate Incoming", data.toString());
 
+            /**
+             * Implementing moving window algorithm
+             * 60 seconds with 30 second overlap
+             * Event driven loop for activity to fetch
+             */
 
-            TimeInstant timeInstant = data.getTime();
-            String time = timeInstant.format("dd_MM_yyyy_HH_mm_ss");
-            //Comes almost every second. Use Deque to store, upload a set of
-            heartRef.child(time)
-                    .setValue(data.getHeartrate().asEventsPerMinute())
-                    .addOnCompleteListener(task -> {
-                        if ( ! task.isSuccessful()) {
-                            String message = "UNKNOWN";
-                            if (task.getException() != null)
-                                message = task.getException().getMessage();
+            Deque<Heartrate>
 
-                            Log.e("Fbase HeartRate Err", message);
-                        }
-                    });
+            storeHeartBeat(time, data);
         });
 
     }

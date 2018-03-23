@@ -1,6 +1,7 @@
 package com.example.overlord.btech_project;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import com.androidplot.Plot;
@@ -56,6 +57,8 @@ public class ECGExample extends Activity {
 
         // set a redraw rate of 30hz and start immediately:
         redrawer = new Redrawer(plot, 30, true);
+
+
     }
 
     /**
