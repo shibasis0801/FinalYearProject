@@ -1,4 +1,4 @@
-package com.example.overlord.btech_project;
+package com.example.overlord.btech_project.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import com.androidplot.Plot;
 import com.androidplot.util.Redrawer;
 import com.androidplot.xy.*;
+import com.example.overlord.btech_project.R;
+import com.example.overlord.btech_project.services.WahooService;
 
 import java.lang.ref.*;
 

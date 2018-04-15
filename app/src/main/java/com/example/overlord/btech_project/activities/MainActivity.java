@@ -1,9 +1,12 @@
-package com.example.overlord.btech_project;
+package com.example.overlord.btech_project.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.example.overlord.btech_project.R;
+import com.example.overlord.btech_project.services.WahooService;
 
 public class MainActivity extends AppCompatActivity {
 

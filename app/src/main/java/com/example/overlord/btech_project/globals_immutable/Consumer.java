@@ -1,4 +1,4 @@
-package com.example.overlord.btech_project;
+package com.example.overlord.btech_project.globals_immutable;
 
 /**
  * Created by overlord on 20/3/18.
