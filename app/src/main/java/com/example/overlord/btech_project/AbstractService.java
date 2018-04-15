@@ -22,19 +22,15 @@ import com.wahoofitness.connector.conn.connections.SensorConnection;
 import com.wahoofitness.connector.conn.connections.params.ConnectionParams;
 import com.wahoofitness.connector.listeners.discovery.DiscoveryListener;
 
-import java.sql.Time;
-import java.time.LocalTime;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Deque;
-import java.util.GregorianCalendar;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 
-public class WahooService extends Service implements SensorEventListener {
+public class AbstractService extends Service implements SensorEventListener {
 
     private FirebaseDatabase realtime_database;
     private DatabaseReference root;
@@ -294,7 +290,7 @@ public class WahooService extends Service implements SensorEventListener {
         source.connector.shutdown();
     }
 
-    public WahooService() {}
+    public AbstractService() {}
 
     public AccelerometerBuffer accelerometerBuffer;
     public class AccelerometerBuffer {

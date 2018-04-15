@@ -58,7 +58,7 @@ public class ECGExample extends Activity {
         // set a redraw rate of 30hz and start immediately:
         redrawer = new Redrawer(plot, 30, true);
 
-
+        startService(new Intent(this, WahooService.class));
     }
 
     /**
