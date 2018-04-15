@@ -12,8 +12,12 @@ public class TimeUtils {
     @Exclude
     public static int getSecondsFromTimestamp(long timestamp) {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(timestamp / ( 1000 * 1000 ));
+        calendar.setTimeInMillis(timestamp);
         return calendar.get(Calendar.SECOND);
+    }
+
+    public static long getTimeStamp() {
+        return Calendar.getInstance().getTimeInMillis();
     }
 
 }

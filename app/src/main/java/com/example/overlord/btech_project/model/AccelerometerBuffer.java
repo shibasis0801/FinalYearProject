@@ -9,6 +9,9 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class AccelerometerBuffer {
     private ConcurrentHashMap<Integer, ConcurrentLinkedQueue<float[]>> acceleroValues;
 
+    private float averagedValues[] = new float[3];
+    private long iterationCount = 0;
+
     public AccelerometerBuffer() {
         acceleroValues = new ConcurrentHashMap<>();
 
@@ -20,19 +23,32 @@ public class AccelerometerBuffer {
         acceleroValues.get(second).add(values);
     }
 
+
     public float[] getAverage(int second) {
 
         float[] average = new float[3];
+
         ConcurrentLinkedQueue<float[]> queue = acceleroValues.get(second);
 
-        for (float[] values : queue)
-            for (int i = 0; i < 3; i++)
-                average[i] += values[i];
+        float n = (float) queue.size();
 
-        for (int i = 0; i < 3; i++)
-            average[i] = average[i] / (float) queue.size();
+        if (queue.isEmpty())
+            return averagedValues;
 
-        return average;
+        else {
+            iterationCount++;
+
+            for (float[] values : queue)
+                for (int i = 0; i < 3; i++)
+                    average[i] += values[i];
+
+            for (int i = 0; i < 3; i++) {
+                average[i] = average[i] / n;
+                averagedValues[i] += (average[i] - averagedValues[i]) / (float)(iterationCount);
+            }
+
+            return average;
+        }
     }
 
     public void remove(int second) {

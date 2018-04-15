@@ -22,11 +22,11 @@ public class AccelerometerSensor {
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
     }
 
-    public void registerListener(Consumer<SensorEvent> sensorEventConsumer) {
+    public void registerListener(Consumer<float []> sensorValuesConsumer) {
         sensorManager.registerListener(new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
-                sensorEventConsumer.accept(sensorEvent);
+                sensorValuesConsumer.accept(sensorEvent.values);
             }
 
             @Override

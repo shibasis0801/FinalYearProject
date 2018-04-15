@@ -50,4 +50,9 @@ public class Fused {
     public void setAccelerationZ(float accelerationZ) {
         this.accelerationZ = accelerationZ;
     }
+
+    @Override
+    public String toString() {
+        return "" + heartBeat + ", (" + accelerationX + ", " + accelerationY + ", " + accelerationZ + ")";
+    }
 }

@@ -21,8 +21,8 @@ public class Singleton {
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         realtime_database = FirebaseDatabase.getInstance();
-        heartRef = root.child("heartBeat");
         root     = realtime_database.getReference();
+        heartRef = root.child("heartBeat");
 
     }
 }

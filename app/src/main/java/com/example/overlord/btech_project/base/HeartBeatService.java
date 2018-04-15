@@ -10,6 +10,7 @@ import com.example.overlord.btech_project.globals_immutable.Consumer;
 import com.wahoofitness.connector.HardwareConnector;
 import com.wahoofitness.connector.HardwareConnectorEnums;
 import com.wahoofitness.connector.HardwareConnectorTypes;
+import com.wahoofitness.connector.capabilities.Accelerometer;
 import com.wahoofitness.connector.capabilities.Capability;
 import com.wahoofitness.connector.capabilities.Heartrate;
 import com.wahoofitness.connector.conn.connections.SensorConnection;
@@ -74,6 +75,11 @@ public abstract class HeartBeatService extends Service {
                             }
                         });
                     }
+                    else if (capabilityType == Capability.CapabilityType.Accelerometer) {
+                        //To Do Implement Accelerometer Reading
+                    }
+
+
                 }
                 @Override
                 public void onSensorConnectionStateChanged(SensorConnection sensorConnection, HardwareConnectorEnums.SensorConnectionState sensorConnectionState) {
