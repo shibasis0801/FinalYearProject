@@ -75,10 +75,6 @@ public abstract class HeartBeatService extends Service {
                             }
                         });
                     }
-                    else if (capabilityType == Capability.CapabilityType.Accelerometer) {
-                        //To Do Implement Accelerometer Reading
-                    }
-
 
                 }
                 @Override

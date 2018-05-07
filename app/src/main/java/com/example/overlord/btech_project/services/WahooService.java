@@ -1,6 +1,9 @@
 package com.example.overlord.btech_project.services;
 
 import android.bluetooth.BluetoothAdapter;
+import android.content.Intent;
+import android.os.Binder;
+import android.os.IBinder;
 import android.util.Log;
 
 import com.example.overlord.btech_project.base.HeartBeatService;
@@ -14,6 +17,8 @@ import com.wahoofitness.connector.capabilities.Heartrate;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import umich.cse.yctung.androidlibsvm.LibSVM;
 
 
 public class WahooService extends HeartBeatService {
@@ -83,5 +88,22 @@ public class WahooService extends HeartBeatService {
 
         source = getSource(this);
         source.setOnNewHeartBeatListener(this::addBeat);
+    }
+
+    public class LocalBinder extends Binder {
+        public WahooService getService() {
+            return WahooService.this;
+        }
+    }
+
+    private final IBinder iBinder = new LocalBinder();
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return iBinder;
+    }
+
+    public MovingWindowBuffer<Fused> getWindowBuffer() {
+        return windowBuffer;
     }
 }

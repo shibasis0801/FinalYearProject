@@ -12,25 +12,10 @@ import com.example.overlord.btech_project.services.WahooService;
 
 import java.lang.ref.*;
 
-/**
- * An example of a real-time plot displaying an asynchronously updated model of ECG data.  There are three
- * key items to pay attention to here:
- * 1 - The model data is updated independently of all other data via a background thread.  This is typical
- * of most signal inputs.
- *
- * 2 - The main render loop is controlled by a separate thread governed by an instance of {@link Redrawer}.
- * The alternative is to try synchronously invoking {@link Plot#redraw()} within whatever system is updating
- * the model, which would severely degrade performance.
- *
- * 3 - The plot is set to render using a background thread via config attr in  R.layout.ecg_example.xml.
- * This ensures that the rest of the app will remain responsive during rendering.
- */
+
 public class ECGExample extends Activity {
     private XYPlot plot;
 
-    /**
-     * Uses a separate thread to modulate redraw frequency.
-     */
     private Redrawer redrawer;
 
     @Override
@@ -59,6 +44,7 @@ public class ECGExample extends Activity {
 
         // set a redraw rate of 30hz and start immediately:
         redrawer = new Redrawer(plot, 30, true);
+
 
         startService(new Intent(this, WahooService.class));
     }
